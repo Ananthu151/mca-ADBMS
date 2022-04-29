@@ -1,0 +1,5 @@
+declare 
+id number;
+begin
+dbms_output.putline("Enter id:");
+id:=&id;

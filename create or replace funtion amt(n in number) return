@@ -1,15 +1,17 @@
 create or replace function amt(n in number) 
-return number is
+return number as
 aa number;
 s number;
 r number;
+len number;
 begin
 aa:=n;
+len:= length(to_char(aa));
 s:=0;
 while aa>0
 	loop
 	r:=aa mod 10;
-	s:=s+r*r*r;
+	s:=s+power(r,len);
 	aa:=trunc(aa/10);
 	end loop;
 return s;
