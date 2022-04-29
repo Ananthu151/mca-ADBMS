@@ -32,7 +32,7 @@ end;
 /
 
 
-create or replace function pow2(number in a,number in b)
+create or replace function pow2(a in number,b in number)
 return number as
 s number;
 aa number;

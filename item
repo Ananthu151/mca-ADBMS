@@ -1,5 +1,22 @@
 declare 
 id number;
+p number;
 begin
-dbms_output.putline("Enter id:");
+dbms_output.putline('Enter id:');
 id:=&id;
+p:=getprice(id);
+dbms_output.putline('Price:'||p);
+end;
+/
+
+
+create or replace function getprice(id in number)
+return number as 
+p item.price%type;
+i number;
+begin
+i:=id;
+select price into p from item where id=i;
+return p;
+end;
+/
