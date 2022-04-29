@@ -11,16 +11,14 @@ end;
 
 create or replace function get(id in number)
 return number as
-a number;
 p item.price%type;
 n item.item_name%type;
 i number;
 begin
-a:=0;
 i:=id;
 select price,item_name into p,n from item where id=i;
 dbms_output.put_line('Name:'||n);
 dbms_output.put_line('Price'||p);
-return a;
+return 0;
 end;
 /
