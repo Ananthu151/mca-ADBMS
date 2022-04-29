@@ -1,0 +1,57 @@
+declare 
+n number:=&n;
+fact number:=1;
+begin
+for i in 2..n
+loop
+fact:=fact*i;
+end loop;
+dbms_output.put_line('Factorial:'||fact);
+end;
+/
+
+declare 
+n number:=&n;
+r number;
+s number:=0;
+n1 number:=n;
+begin
+while n1>0
+	loop
+	r:=n1 mod 10;
+	s:=s+r*r*r;
+	n1:=trunc(n1/10);
+	end loop;
+if s=n
+	then
+	dbms_output.put_line('Its a armstrong number!!'||s);
+else
+	dbms_output.put_line('Its not a armstrong number!!'||s);
+end if;
+end;
+/
+
+
+create or replace function pow2(number in a,number in b)
+return number as
+s number;
+aa number;
+bb number;
+begin
+aa:=a;
+bb:=b;
+s:=power(aa,bb);
+return s;
+end;
+/
+
+
+declare
+a number:=&a;
+b number:=&b;
+s number;
+begin
+s:=pow2(a,b);
+dbms_output.put_line('a pow b is:'||s);
+end;
+/

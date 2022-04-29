@@ -1,0 +1,20 @@
+create or replace function sum1(a in number,b in number) return number 
+as 
+s number;
+begin
+s:=a+b;
+return s;
+end;
+/
+
+declare
+a number;
+b number;
+c number;
+begin
+a:=&a;
+b:=&b;
+c:=sum1(a,b);
+dbms_output.put_line(chr(10)||'Sum is '||c);
+end;
+/
