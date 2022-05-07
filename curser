@@ -1,0 +1,14 @@
+declare
+n item.item_name%type;
+p item.price%type;
+cursor c is select item_name,price from item;
+ begin
+ open c;
+ loop
+ fetch c into n,p;
+ exit when c %notfound;
+ dbms_output.put_line(n||' '||p);
+ end loop;
+ close c;
+ end;
+ /
