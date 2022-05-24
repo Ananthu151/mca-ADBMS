@@ -1,0 +1,29 @@
+create table student(rollno int,name varchar(20),gender varchar(10));
+create table count(mcount int,fcount int);
+
+
+create or replace trigger t1 after insert on student
+for each row
+begin
+if(:new.gender='m')
+then
+update count set mcount=mcount+1;
+else
+update count set fcount=fcount+1;
+end if;
+end;
+/
+
+insert into student values(1,'manu','f');
+
+
+
+create table gold(price int);
+create table goldlog(newprice int,oldprice int,gdate date);
+
+create or replace trigger t2 after update on gold
+for each row
+begin
+insert into goldlog values(:new.price,:old.price,SYSDATE);
+end;
+/
