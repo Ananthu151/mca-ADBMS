@@ -1,0 +1,34 @@
+create or replace procedure display as
+cursor c is select * from product;
+begin
+for i in c
+loop
+dbms_output.put_line(i.product_id||' '||i.product_name||' '||i.price);
+end loop;
+end;
+/
+
+
+create or replace procedure updateprice(id number) as
+ex exception;
+begin
+update product set price=price+100 where product_id=id;
+if sql%notfound
+then
+raise ex;
+end if;
+exception
+when ex then
+dbms_output.put_line('Invalid Product id');
+end;
+/
+
+
+declare
+id number;
+begin
+id:=&id;
+updateprice(id);
+display();
+end;
+/
